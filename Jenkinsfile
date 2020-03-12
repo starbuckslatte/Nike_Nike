@@ -1,22 +1,18 @@
 pipeline {
-  agent none
-  parameters {
-      string(build_result: 'Success')
-  }
-  stages {
-    stage('Build') {
-      steps {
-        echo 'Hello World'
-        build 'Nike_Build'
-      }
+    agent any
+    stages {
+        stage('Example Build') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('Example Deploy') {
+            when {
+                branch 'production'
+            }
+            steps {
+                echo 'Deploying'
+            }
+        }
     }
-
-    stage('Stage') {
-      when { build_result 'Success' }
-      steps {
-        echo 'Deploying'
-      }
-    }
-
-  }
 }
