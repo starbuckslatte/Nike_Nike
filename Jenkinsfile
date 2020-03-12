@@ -16,6 +16,7 @@ pipeline {
                 }
 
                 echo "Build Result: ${currentBuild.result}"
+                echo "Build Result2: ${build_result}"
             }
         }
 
