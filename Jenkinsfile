@@ -14,6 +14,7 @@ pipeline {
                         currentBuild.result = 'FAILURE'
           }
         }
+                build_result = currentBuild.result
                 echo "Build Result: ${currentBuild.result}"
       }
     }
