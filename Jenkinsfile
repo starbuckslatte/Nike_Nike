@@ -13,7 +13,7 @@ pipeline {
         label 'some-label'
       }
       when {
-        build_result true
+        build_result 'DEPLOY_TO'
       }
       steps {
         echo 'Deploying'
