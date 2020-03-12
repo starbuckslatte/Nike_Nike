@@ -1,6 +1,7 @@
 def build_result
 def stage_result
 def uat_result
+def deploy_result
 pipeline {
     agent any
     stages {
@@ -48,7 +49,7 @@ pipeline {
                 }
             }
             steps {
-                echo 'Stage mode'
+                echo 'UAT process'
                 script {
                     try {
                         build job: 'UATProcess'
@@ -59,6 +60,27 @@ pipeline {
                     }
                     uat_result = currentBuild.result
                     echo "uat_result: ${uat_result}"
+                }
+            }
+        }
+        stage('Deploy') {
+            when {
+                expression {
+                    deploy_result == 'SUCCESS'
+                }
+            }
+            steps {
+                echo 'Deploy process'
+                script {
+                    try {
+                        build job: 'Route to Production'
+                        currentBuild.result = 'SUCCESS'
+                    } catch (err) {
+                        echo err
+                        currentBuild.result = 'FAILURE'
+                    }
+                    deploy_result = currentBuild.result
+                    echo "uat_result: ${deploy_result}"
                 }
             }
         }
