@@ -66,7 +66,7 @@ pipeline {
         stage('Deploy') {
             when {
                 expression {
-                    deploy_result == 'SUCCESS'
+                    uat_result == 'SUCCESS'
                 }
             }
             steps {
