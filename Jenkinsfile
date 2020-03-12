@@ -4,11 +4,11 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Hello World'
-                def jobResult = jobBuild.getResult()
-                echo "Returned result: ${jobResult}"
-                if (jobResult != 'SUCCESS') {
-                    error("testJob failed with result: ${jobResult}")
-                }
+                // def jobResult = jobBuild.getResult()
+                // echo "Returned result: ${jobResult}"
+                // if (jobResult != 'SUCCESS') {
+                //     error("testJob failed with result: ${jobResult}")
+                // }
 
             }
         }
