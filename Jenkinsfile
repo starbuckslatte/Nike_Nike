@@ -18,9 +18,6 @@ pipeline {
     }
 
     stage('Stage') {
-      when {
-        build_result: 'Success'
-      }
       steps {
         echo 'Deploying'
       }
