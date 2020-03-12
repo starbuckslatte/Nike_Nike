@@ -19,5 +19,11 @@ pipeline {
       }
     }
 
+    stage('Deployment') {
+      steps {
+        build 'Route to Production'
+      }
+    }
+
   }
 }
