@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Deploy') {
             when {
-                expression { build_result == 'FAILURE' }
+                expression { build_result == 'SUCCESS' }
             }
             steps {
                 echo 'Deploying'
