@@ -1,4 +1,5 @@
 def build_result
+
 pipeline {
     agent any
     stages {
@@ -13,8 +14,8 @@ pipeline {
                         echo err
                         currentBuild.result = 'FAILURE'
           }
+          build_result = currentBuild.result
         }
-                build_result = currentBuild.result
                 echo "Build Result: ${currentBuild.result}"
       }
     }
