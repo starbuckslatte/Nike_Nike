@@ -5,27 +5,27 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Hello World'
+                echo 'Build Process'
                 script {
                     try {
                         build job: 'Nike_Build'
                         currentBuild.result = 'SUCCESS'
-          } catch (err) {
+                    } catch (err) {
                         echo err
                         currentBuild.result = 'FAILURE'
-          }
-          build_result = currentBuild.result
-        }
+                    }
+                    build_result = currentBuild.result
+                }
                 echo "Build Result: ${currentBuild.result}"
-      }
-    }
+            }
+        }
         stage('Deploy') {
             when {
-                branch 'production'
-      }
+                build_result 'FAILURE'
+            }
             steps {
                 echo 'Deploying'
-      }
+            }
+        }
     }
-  }
 }
