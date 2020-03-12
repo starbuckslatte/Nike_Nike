@@ -1,41 +1,22 @@
 pipeline {
-  agent any
-  stages {
-    stage('Build') {
-      steps {
-        build(job: 'Nike_Build', wait: true)
-      }
-    }
-
-    stage('Stage') {
-      steps {
-        build 'StageProcess'
-      }
-    }
-
-    stage('UAT') {
-      steps {
-        build 'UATProcess'
-        error 'Build Fail'
-      }
-      post {
-        success {
-          stage('Deployment') {
+    agent none
+    stages {
+        stage('Example Build') {
             steps {
-              build 'Route to Production'
+                echo 'Hello World'
             }
-          }
         }
-        unstable {
-            echo 'I am unstable :/'
+        stage('Example Deploy') {
+            agent {
+                label "some-label"
+            }
+            when {
+                beforeAgent true
+                branch 'production'
+            }
+            steps {
+                echo 'Deploying'
+            }
         }
-        failure {
-            echo 'I failed :('
-        }
-      }
     }
-
-
-
-  }
 }
