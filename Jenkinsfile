@@ -89,7 +89,6 @@ pipeline {
           echo "uat_result: ${deploy_result}"
         }
 
-        waitUntil()
       }
     }
 
