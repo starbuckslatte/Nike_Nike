@@ -9,11 +9,8 @@ pipeline {
     }
 
     stage('Stage') {
-      agent {
-        label 'some-label'
-      }
       when {
-        build_result 'DEPLOY_TO'
+        build_result 'Success'
       }
       steps {
         echo 'Deploying'
