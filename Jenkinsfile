@@ -20,7 +20,11 @@ pipeline {
       }
       post {
         success {
-            echo 'I succeeeded!'
+          stage('Deployment') {
+            steps {
+              build 'Route to Production'
+            }
+          }
         }
         unstable {
             echo 'I am unstable :/'
@@ -31,11 +35,7 @@ pipeline {
       }
     }
 
-    stage('Deployment') {
-      steps {
-        build 'Route to Production'
-      }
-    }
+
 
   }
 }
