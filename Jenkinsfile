@@ -7,5 +7,11 @@ pipeline {
       }
     }
 
+    stage('Stage') {
+      steps {
+        build 'StageProcess'
+      }
+    }
+
   }
 }
