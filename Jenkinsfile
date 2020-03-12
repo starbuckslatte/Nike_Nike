@@ -1,7 +1,6 @@
 pipeline {
     agent any
     stages {
-        def build_result
         stage('Build') {
             steps {
                 echo 'Hello World'
@@ -14,7 +13,7 @@ pipeline {
                         currentBuild.result = 'FAILURE'
                     }
                 }
-                echo build_result
+                echo currentBuild.result
             }
         }
         stage('Example Deploy') {
