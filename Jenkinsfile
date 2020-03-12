@@ -88,6 +88,7 @@ pipeline {
           echo "uat_result: ${deploy_result}"
         }
 
+        input 'Are you sure want to deploy?'
       }
     }
 
