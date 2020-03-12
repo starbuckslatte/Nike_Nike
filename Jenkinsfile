@@ -1,34 +1,29 @@
-pipeline
-{
+pipeline {
     agent any
-    stages
-    {
+    stages {
         // def build_result = ''
-        String build_result = "" stage('Build')
-        {
-            steps
-            {
-                echo 'Hello World' script
-                {
+        stage('Build') {
+            steps {
+                echo 'Hello World'
+                script {
                     try {
-                        build job : 'Nike_Build' currentBuild.result = 'SUCCESS'
-                    } catch (err) {
+                        build job: 'Nike_Build'
+                        currentBuild.result = 'SUCCESS'
+          } catch (err) {
                         echo err
-                            currentBuild.result = 'FAILURE'
-                    }
-                }
-
+                        currentBuild.result = 'FAILURE'
+          }
+        }
                 echo "Build Result: ${currentBuild.result}"
-            }
-        }
-
-        stage('Deploy')
-        {
-            when{
-                branch 'production'} steps
-            {
-                echo 'Deploying'
-            }
-        }
+      }
     }
+        stage('Deploy') {
+            when {
+                branch 'production'
+      }
+            steps {
+                echo 'Deploying'
+      }
+    }
+  }
 }
