@@ -1,7 +1,7 @@
 pipeline {
     agent any
-    def build_result
     stages {
+        build_result = ''
         stage('Build') {
             steps {
                 echo 'Hello World'
