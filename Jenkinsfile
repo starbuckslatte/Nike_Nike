@@ -20,9 +20,7 @@ pipeline {
         }
         stage('Deploy') {
             when {
-                equal{
-                  build_result 'FAILURE'
-                }
+                branch 'production'
             }
             steps {
                 echo 'Deploying'
