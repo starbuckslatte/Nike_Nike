@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Deploy') {
             when {
-                build_result 'production'
+                branch 'production'
             }
             steps {
                 echo 'Deploying'
