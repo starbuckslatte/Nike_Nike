@@ -1,19 +1,19 @@
 pipeline {
   agent none
   stages {
-    stage('Example Build') {
+    stage('Build') {
       steps {
         echo 'Hello World'
         build 'Nike_Build'
       }
     }
 
-    stage('Example Deploy') {
+    stage('Stage') {
       agent {
         label 'some-label'
       }
       when {
-        beforeAgent true
+        build_result "Success"
         branch 'production'
       }
       steps {
