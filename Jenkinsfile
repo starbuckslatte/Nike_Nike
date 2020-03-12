@@ -13,7 +13,7 @@ pipeline {
                         currentBuild.result = 'FAILURE'
                     }
                 }
-                echo ${currentBuild.result}
+                echo "${currentBuild.result}"
             }
         }
         stage('Example Deploy') {
