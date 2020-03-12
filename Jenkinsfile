@@ -1,5 +1,8 @@
 pipeline {
   agent none
+  parameters {
+      string(build_result: '')
+  }
   stages {
     stage('Build') {
       steps {
