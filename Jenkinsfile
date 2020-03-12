@@ -1,4 +1,5 @@
 def build_result
+def stage_result
 pipeline {
     agent any
     stages {
@@ -18,12 +19,25 @@ pipeline {
                 }
             }
         }
-        stage('Deploy') {
+        stage('Stage') {
             when {
-                expression { build_result == 'SUCCESS' }
+                expression {
+                    build_result == 'SUCCESS'
+                }
             }
             steps {
-                echo 'Deploying'
+                echo 'Stage mode'
+                script {
+                    try {
+                        build job: 'StageProcess'
+                        currentBuild.result = 'SUCCESS'
+                    } catch (err) {
+                        echo err
+                        currentBuild.result = 'FAILURE'
+                    }
+                    stage_result = currentBuild.result
+                    echo "Stage_result: ${stage_result}"
+                }
             }
         }
     }
