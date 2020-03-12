@@ -1,4 +1,3 @@
-
 def build_result
 pipeline {
     agent any
@@ -17,15 +16,14 @@ pipeline {
                     build_result = currentBuild.result
                     echo "Build result: ${build_result}"
                 }
-
-                stage('Deploy') {
-                    when {
-                        build_result 'production'
-                    }
-                    steps {
-                        echo 'Deploying'
-                    }
-                }
+            }
+        }
+        stage('Deploy') {
+            when {
+                build_result 'production'
+            }
+            steps {
+                echo 'Deploying'
             }
         }
     }
