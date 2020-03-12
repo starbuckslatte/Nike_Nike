@@ -1,5 +1,4 @@
 def build_result
-
 pipeline {
     agent any
     stages {
