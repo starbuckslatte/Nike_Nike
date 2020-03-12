@@ -2,6 +2,7 @@ pipeline {
     agent any
     stages {
         // def build_result = ''
+        String build_result = ""
         stage('Build') {
             steps {
                 echo 'Hello World'
