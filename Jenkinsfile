@@ -13,5 +13,11 @@ pipeline {
       }
     }
 
+    stage('UAT') {
+      steps {
+        build 'UATProcess'
+      }
+    }
+
   }
 }
