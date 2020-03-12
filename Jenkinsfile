@@ -15,6 +15,7 @@ pipeline {
                         currentBuild.result = 'FAILURE'
                     }
                     build_result = currentBuild.result
+                    echo "Build result: ${build_result}"
                 }
 
                 stage('Deploy') {
