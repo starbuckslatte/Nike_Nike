@@ -1,5 +1,6 @@
 pipeline {
     agent any
+    def build_result
     stages {
         stage('Build') {
             steps {
@@ -8,21 +9,21 @@ pipeline {
                     try {
                         build job: 'Nike_Build'
                         currentBuild.result = 'SUCCESS'
-                    } catch (err) {
+          } catch (err) {
                         echo err
                         currentBuild.result = 'FAILURE'
-                    }
-                }
-                echo "${currentBuild.result}"
-            }
+          }
         }
-        stage('Example Deploy') {
+                echo "Build Result: ${currentBuild.result}"
+      }
+    }
+        stage('Deploy') {
             when {
                 branch 'production'
-            }
+      }
             steps {
                 echo 'Deploying'
-            }
-        }
+      }
     }
+  }
 }
