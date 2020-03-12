@@ -18,6 +18,17 @@ pipeline {
         build 'UATProcess'
         error 'Build Fail'
       }
+      post {
+        success {
+            echo 'I succeeeded!'
+        }
+        unstable {
+            echo 'I am unstable :/'
+        }
+        failure {
+            echo 'I failed :('
+        }
+      }
     }
 
     stage('Deployment') {
