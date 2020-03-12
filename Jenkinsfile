@@ -15,19 +15,15 @@ pipeline {
                     build_result = currentBuild.result
                 }
 
-                echo "Build Result: ${currentBuild.result}"
-                echo "Build Result2: ${build_result}"
+                stage('Deploy') {
+                    when {
+                        build_result 'production'
+                    }
+                    steps {
+                        echo 'Deploying'
+                    }
+                }
             }
         }
-
-        stage('Deploy') {
-            when {
-                build_result 'production'
-            }
-            steps {
-                echo 'Deploying'
-            }
-        }
-
     }
 }
