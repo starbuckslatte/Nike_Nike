@@ -13,8 +13,7 @@ pipeline {
         label 'some-label'
       }
       when {
-        build_result "Success"
-        branch 'production'
+        build_result true
       }
       steps {
         echo 'Deploying'
