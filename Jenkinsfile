@@ -64,6 +64,7 @@ pipeline {
           echo "uat_result: ${uat_result}"
         }
 
+        input 'Are you sure want to deploy?'
       }
     }
 
@@ -88,7 +89,7 @@ pipeline {
           echo "uat_result: ${deploy_result}"
         }
 
-        input 'Are you sure want to deploy?'
+        waitUntil()
       }
     }
 
