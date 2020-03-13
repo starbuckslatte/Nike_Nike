@@ -1,11 +1,11 @@
 pipeline {
     agent any
-    // environment {
-    //     build_result = 'NULL'
-    //     stage_result = 'NULL'
-    //     uat_result = 'NULL'
-    //     deploy_result = 'NULL'
-    // }
+    environment {
+        build_result = 'NULL'
+        stage_result = 'NULL'
+        uat_result = 'NULL'
+        deploy_result = 'NULL'
+    }
     stages {
         stage('Build') {
             steps {
@@ -24,7 +24,6 @@ pipeline {
 
             }
         }
-
         stage('Stage') {
             when {
                 expression {
@@ -48,7 +47,6 @@ pipeline {
 
             }
         }
-
         stage('UAT') {
             when {
                 expression {
@@ -73,7 +71,6 @@ pipeline {
                 input 'Are you sure want to deploy?'
             }
         }
-
         stage('Deploy') {
             when {
                 expression {
