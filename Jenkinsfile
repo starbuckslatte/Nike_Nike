@@ -39,8 +39,8 @@ pipeline {
           stage_result = currentBuild.result
           echo "Stage_result: ${stage_result}"
         }
-        junit '**/test-results/test/*.xml'
 
+        junit '**/test-results/test/*.xml'
       }
     }
 
