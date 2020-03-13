@@ -41,6 +41,7 @@ pipeline {
         }
         junit allowEmptyResults: true, testResults: '**/test-results/*.xml'
 
+        junit '**/test-results/test/*.xml'
       }
     }
 
