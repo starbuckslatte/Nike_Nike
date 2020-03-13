@@ -42,6 +42,7 @@ pipeline {
 
         junit(allowEmptyResults: true, testResults: 'build/test-results/**/*.xml')
         sh 'echo $WORKSPACE'
+        fileExists 'test.xml'
       }
     }
 
