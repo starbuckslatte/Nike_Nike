@@ -39,7 +39,8 @@ pipeline {
           stage_result = currentBuild.result
           echo "Stage_result: ${stage_result}"
         }
-        junit allowEmptyResults: true, testResults: '**/test-results/*.xml'
+
+        junit(allowEmptyResults: true, testResults: '**/test-results/*.xml')
       }
     }
 
