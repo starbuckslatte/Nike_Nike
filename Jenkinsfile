@@ -1,11 +1,11 @@
 pipeline {
     agent any
-    environment {
-        build_result = 'NULL'
-        stage_result = 'NULL'
-        uat_result = 'NULL'
-        deploy_result = 'NULL'
-    }
+    // environment {
+    //     build_result = 'NULL'
+    //     stage_result = 'NULL'
+    //     uat_result = 'NULL'
+    //     deploy_result = 'NULL'
+    // }
     stages {
         stage('Build') {
             steps {
