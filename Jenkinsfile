@@ -40,8 +40,6 @@ pipeline {
           echo "Stage_result: ${stage_result}"
         }
         junit allowEmptyResults: true, testResults: '**/test-results/*.xml'
-
-        junit '**/test-results/test/*.xml'
       }
     }
 
